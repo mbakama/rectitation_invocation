@@ -1,28 +1,54 @@
 {
   "expo": {
-    "name": "react-app",
-    "slug": "react-app",
+    "name": "Récitation Spirituelle",
+    "slug": "recitation-spirituelle",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.recitation.spirituelle"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.recitation.spirituelle",
+      "versionCode": 1,
+      "permissions": [],
+      "softwareKeyboardLayoutMode": "pan",
+      "allowBackup": true,
+      "targetSdkVersion": 33,
+      "compileSdkVersion": 33
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "93fb0908-f711-45aa-84d2-8621588af232"
+      }
+    },
+    "owner": "hect93",
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "enabled": true,
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/93fb0908-f711-45aa-84d2-8621588af232"
+    },
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-build-properties"
+    ]
   }
 }
