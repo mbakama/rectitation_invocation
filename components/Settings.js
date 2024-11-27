@@ -220,28 +220,29 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 16,
+    padding: 12,
+    paddingTop: 8,
     borderBottomWidth: 1,
   },
   backButton: {
-    padding: 10,
+    padding: 8,
     borderRadius: 12,
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginLeft: 15,
+    marginLeft: 12,
   },
   content: {
     flex: 1,
   },
   categorySection: {
-    marginTop: 24,
+    marginTop: 20,
   },
   categoryTitle: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '600',
-    marginBottom: 16,
+    marginBottom: 12,
     paddingHorizontal: 16,
   },
   menuList: {

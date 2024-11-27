@@ -397,17 +397,26 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
   safeArea: {
     flex: 1,
   },
-  container: {
-    flex: 1,
+  settingsButton: {
+    position: 'absolute',
+    right: 16,
+    top: 8,
+    padding: 8,
+    borderRadius: 12,
+    zIndex: 1,
   },
   counterContainer: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 100,
+    alignItems: 'center',
+    paddingBottom: 50,
   },
   counterText: {
     fontSize: 120,
@@ -417,14 +426,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 20,
     textAlign: 'center',
-  },
-  settingsButton: {
-    position: 'absolute',
-    top: 35,
-    right: 20,
-    padding: 12,
-    borderRadius: 30,
-    zIndex: 1,
   },
   counterDisabled: {
     opacity: 0.7,
