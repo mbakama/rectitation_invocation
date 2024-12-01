@@ -5,12 +5,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DEFAULT_TIMES = ['09:00', '15:00', '21:00'];
 
-export default function RecitationSettings({ onBack, theme, onSave }) {
-  const [timesPerDay, setTimesPerDay] = useState(1);
-  const [recitationTimes, setRecitationTimes] = useState([...DEFAULT_TIMES]);
+export default function RecitationSettings({ onBack, theme, onSave, settings }) {
+  const [timesPerDay, setTimesPerDay] = useState(settings?.count || 1);
+  const [recitationTimes, setRecitationTimes] = useState(settings?.times || [...DEFAULT_TIMES]);
 
   useEffect(() => {
-    loadSettings();
+    if (!settings) {
+      loadSettings();
+    }
   }, []);
 
   const loadSettings = async () => {
@@ -28,10 +30,19 @@ export default function RecitationSettings({ onBack, theme, onSave }) {
 
   const saveSettings = async () => {
     try {
+      // Récupérer les paramètres existants
+      const existingSettings = await AsyncStorage.getItem('recitationSettings');
+      const currentSettings = existingSettings ? JSON.parse(existingSettings) : {};
+      
+      // Fusionner avec les nouveaux paramètres
       const settings = {
+        ...currentSettings,
         times: recitationTimes.slice(0, timesPerDay),
-        count: timesPerDay
+        count: timesPerDay,
+        soundEnabled: currentSettings.soundEnabled !== undefined ? currentSettings.soundEnabled : true,
+        volume: currentSettings.volume || 0.5
       };
+      
       await AsyncStorage.setItem('recitationSettings', JSON.stringify(settings));
       onSave(settings);
       Alert.alert('Succès', 'Paramètres enregistrés avec succès');
@@ -82,16 +93,25 @@ export default function RecitationSettings({ onBack, theme, onSave }) {
     
     newTimes[index] = `${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}`;
     setRecitationTimes(newTimes);
+    
+    // Sauvegarder immédiatement après chaque ajustement
+    const settings = {
+      times: newTimes.slice(0, timesPerDay),
+      count: timesPerDay,
+      soundEnabled: true,
+      volume: 0.5
+    };
+    onSave(settings);
   };
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <View style={[styles.header, { borderBottomColor: theme.border }]}>
+      {/* <View style={[styles.header, { borderBottomColor: theme.border }]}>
         <TouchableOpacity onPress={onBack} style={styles.backButton}>
           <Ionicons name="arrow-back" size={24} color={theme.secondary} />
         </TouchableOpacity>
         <Text style={[styles.title, { color: theme.text }]}>Horaires de Récitation</Text>
-      </View>
+      </View> */}
 
       <ScrollView style={styles.content}>
         <View style={styles.section}>

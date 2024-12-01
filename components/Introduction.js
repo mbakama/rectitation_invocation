@@ -22,6 +22,8 @@ export default function Introduction({ visible, onClose, theme }) {
       color: theme.text,
       textAlign: 'center',
       marginBottom: 20,
+      fontStyle: 'italic',
+      fontFamily: 'serif',
     },
     subtitle: {
       fontSize: 18,
@@ -29,12 +31,16 @@ export default function Introduction({ visible, onClose, theme }) {
       color: theme.text,
       marginTop: 15,
       marginBottom: 10,
+      fontStyle: 'italic',
+      fontFamily: 'serif',
     },
     text: {
       fontSize: 16,
       color: theme.secondary,
       marginBottom: 15,
       lineHeight: 24,
+      fontStyle: 'italic',
+      fontFamily: 'serif',
     },
     quote: {
       fontStyle: 'italic',
@@ -42,6 +48,7 @@ export default function Introduction({ visible, onClose, theme }) {
       padding: 15,
       borderRadius: 10,
       marginVertical: 10,
+      fontWeight: 'bold',
     },
     closeButton: {
       padding: 10,
